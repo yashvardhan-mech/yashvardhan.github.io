@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Case study, Mercedes hackathon</title>
+
+</head>
+<body>
+<div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0C0D0F;color:#EEEAE2;font-family:'Archivo',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+a,button{transition:background-color .15s,color .15s,border-color .15s,box-shadow .2s,transform .12s,opacity .15s,filter .15s}
+a:hover{opacity:.82}
+a:active,button:active{transform:scale(.96)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid #FF6B1A;outline-offset:3px}
+.knob{background:#1C1F23;border:2px solid #3A3F46;color:#EEEAE2}
+.knob:hover{border-color:#FF6B1A}
+.knob[aria-pressed="true"]{background:#FF6B1A;border-color:#FF6B1A;color:#0C0D0F;box-shadow:0 0 0 8px rgba(255,107,26,.16)}
+.cta:hover{filter:brightness(1.12)}
+.ghost:hover{border-color:#EEEAE2}
+.spin{transform-box:fill-box;transform-origin:50% 50%;animation-timing-function:linear;animation-iteration-count:infinite}
+.cw{animation-name:cw}
+.ccw{animation-name:ccw}
+@keyframes cw{to{transform:rotate(360deg)}}
+@keyframes ccw{to{transform:rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.logtable{min-width:660px}
+@media (max-width:600px){.navlink,.wide,.fieldcol{display:none !important}.logtable{min-width:0}}
+</style>
+
+<div style="width:100%;background:#0C0D0F;color:#EEEAE2;font-family:'Archivo',system-ui,sans-serif"><header style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:18px clamp(16px,4vw,40px);display:flex;gap:12px 24px;align-items:center;justify-content:space-between">
+<a href="Main.dc.html" style="min-height:44px;display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px">← Back to the cockpit</a>
+<a href="Main.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:50%;border:2px solid #FF6B1A;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:15px;color:#FF6B1A">4</span><span class="wide" style="font-weight:800;font-stretch:125%;font-size:17px">Yashvardhan Sonegara</span></a>
+</header><section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:clamp(40px,7vw,88px) clamp(16px,4vw,40px) clamp(40px,5vw,64px);display:flex;flex-direction:column;gap:28px">
+<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;font-weight:500;letter-spacing:.12em;color:#FF6B1A">CASE STUDY · MERCEDES-BENZ R&amp;D INDIA HACKATHON</span>
+<h1 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(38px,7vw,96px);line-height:.95;letter-spacing:-0.035em;max-width:1100px;text-wrap:balance">Stopping one hot cell from taking the pack with it.</h1>
+<p style="margin:0;max-width:720px;font-size:clamp(17px,1.7vw,21px);line-height:1.55;color:#C9CCD1;text-wrap:pretty">In a battery pack, one overheating cell can heat its neighbour until that one fails too, and the next, and the next. My project is a passive barrier that breaks the chain, with no electronics and no power.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px 32px;padding-top:24px;border-top:1px solid #2B2F35"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">EVENT</span><span style="font-size:16px;font-weight:600;color:#EEEAE2">Science in Motion · Future Mobility Hackathon</span></div><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">RUN BY</span><span style="font-size:16px;font-weight:600;color:#EEEAE2">Mercedes-Benz R&amp;D India</span></div><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">STATUS</span><span style="font-size:16px;font-weight:600;color:#EEEAE2">Shortlisted, Round 2</span></div><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">BY</span><span style="font-size:16px;font-weight:600;color:#EEEAE2">Yashvardhan Sonegara, Vidyashilp Academy</span></div></div>
+</section><section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:0 clamp(16px,4vw,40px) clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center"><div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:18px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:#FF6B1A">CHAPTER 1 · WHERE IT STARTED</span><h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-0.03em;text-wrap:balance">Can a smaller turbo engine do a bigger engine&#39;s job?</h2><p style="margin:0;font-size:17px;line-height:1.6;color:#C9CCD1;text-wrap:pretty">My first idea for the hackathon was a physics-based simulation comparing two petrol engines for the Indian market: a 1.5&nbsp;L naturally aspirated engine and a 1.0&nbsp;L turbocharged one.</p><p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;color:#FF6B1A">[ADD YOUR KEY FINDING FROM THE SIMULATION]</p></div><div style="flex:1 1 380px;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#2B2F35;border:1px solid #2B2F35;border-radius:24px;overflow:hidden"><div style="background:#15171A;padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">ENGINE A</span><span style="font-weight:800;font-stretch:125%;font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-0.03em">1.5 L</span><span style="font-size:15px;line-height:1.4;color:#C9CCD1">Naturally aspirated petrol</span><span style="margin-top:10px;padding-top:12px;border-top:1px solid #2B2F35;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#FF6B1A">[YOUR RESULT]</span></div><div style="background:#15171A;padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">ENGINE B</span><span style="font-weight:800;font-stretch:125%;font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-0.03em">1.0 L</span><span style="font-size:15px;line-height:1.4;color:#C9CCD1">Turbocharged petrol</span><span style="margin-top:10px;padding-top:12px;border-top:1px solid #2B2F35;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#FF6B1A">[YOUR RESULT]</span></div><div style="grid-column:1 / -1;background:#101114;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;box-sizing:border-box;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#A3A8B0">[GRAPH FROM THE ENGINE SIMULATION]</div></div></section><section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:0 clamp(16px,4vw,40px) clamp(56px,7vw,96px)">
+  <div style="background:var(--panel);border:1px solid var(--rule);border-radius:28px;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:36px">
+    
+    <!-- Section header -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">CHAPTER 2 · THE ROUND 2 PROPOSAL</span>
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">CONCEPT SKETCH · NOT TO SCALE</span>
+    </div>
+
+    <!-- WITHOUT A BARRIER: 6 hot cells fading left to right, with arrows -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-weight:800;font-stretch:125%;font-size:clamp(20px,2.2vw,26px)">Without a barrier</span>
+      <div aria-hidden="true" style="display:flex;align-items:center;gap:clamp(4px,1vw,12px)">
+        <!-- Cell 1 (hottest, full opacity) -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:1"></div>
+        <div style="flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:clamp(14px,2vw,26px);color:var(--ignition)">→</div>
+        <!-- Cell 2 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:.82"></div>
+        <div style="flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:clamp(14px,2vw,26px);color:var(--ignition)">→</div>
+        <!-- Cell 3 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:.64"></div>
+        <div style="flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:clamp(14px,2vw,26px);color:var(--ignition)">→</div>
+        <!-- Cell 4 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:.48"></div>
+        <div style="flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:clamp(14px,2vw,26px);color:var(--ignition)">→</div>
+        <!-- Cell 5 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:.34"></div>
+        <div style="flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:clamp(14px,2vw,26px);color:var(--ignition)">→</div>
+        <!-- Cell 6 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition);opacity:.22"></div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">Heat jumps from cell to cell until the whole module fails.</span>
+    </div>
+
+    <!-- WITH BARRIER: cell, barrier, dark cell, barrier, dark cell, ... -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-weight:800;font-stretch:125%;font-size:clamp(20px,2.2vw,26px)">With the barrier</span>
+      <div aria-hidden="true" style="display:flex;align-items:center;gap:clamp(4px,1vw,12px)">
+        <!-- Cell 1 (hot) -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--ignition)"></div>
+        <!-- Barrier -->
+        <div style="flex:0 0 clamp(6px,0.9vw,10px);height:clamp(104px,13.5vw,170px);border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div>
+        <!-- Cell 2 (cool) -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--raised);border:2px solid var(--rule-2);box-sizing:border-box"></div>
+        <!-- Barrier -->
+        <div style="flex:0 0 clamp(6px,0.9vw,10px);height:clamp(104px,13.5vw,170px);border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div>
+        <!-- Cell 3 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--raised);border:2px solid var(--rule-2);box-sizing:border-box"></div>
+        <!-- Barrier -->
+        <div style="flex:0 0 clamp(6px,0.9vw,10px);height:clamp(104px,13.5vw,170px);border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div>
+        <!-- Cell 4 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--raised);border:2px solid var(--rule-2);box-sizing:border-box"></div>
+        <!-- Barrier -->
+        <div style="flex:0 0 clamp(6px,0.9vw,10px);height:clamp(104px,13.5vw,170px);border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div>
+        <!-- Cell 5 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--raised);border:2px solid var(--rule-2);box-sizing:border-box"></div>
+        <!-- Barrier -->
+        <div style="flex:0 0 clamp(6px,0.9vw,10px);height:clamp(104px,13.5vw,170px);border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div>
+        <!-- Cell 6 -->
+        <div style="flex:1 1 0;min-width:0;height:clamp(84px,11vw,140px);border-radius:10px;background:var(--raised);border:2px solid var(--rule-2);box-sizing:border-box"></div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">The failure stays in one cell.</span>
+    </div>
+
+  </div>
+</section>
+<section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:0 clamp(16px,4vw,40px) clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:40px">
+  <!-- 01 THE PROBLEM -->
+  <div style="border-top:2px solid var(--chalk);padding-top:22px;display:flex;flex-direction:column;gap:12px">
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">01 · THE PROBLEM</span>
+    <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(22px,2.4vw,28px);line-height:1.12;letter-spacing:-0.02em">One cell fails, the pack follows.</h2>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:var(--muted);text-wrap:pretty">Cells sit tightly packed in a module. Heat from one failing cell can spread to its neighbours, which is how a single fault becomes a pack fire.</p>
+  </div>
+  <!-- 02 THE IDEA -->
+  <div style="border-top:2px solid var(--chalk);padding-top:22px;display:flex;flex-direction:column;gap:12px">
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">02 · THE IDEA</span>
+    <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(22px,2.4vw,28px);line-height:1.12;letter-spacing:-0.02em">A barrier that needs no power.</h2>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:var(--muted);text-wrap:pretty">A passive barrier between cells that blocks the spread of heat. Nothing to switch on, nothing to fail electrically.</p>
+  </div>
+  <!-- 03 THE PROOF -->
+  <div style="border-top:2px solid var(--chalk);padding-top:22px;display:flex;flex-direction:column;gap:12px">
+    <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">03 · THE PROOF</span>
+    <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(22px,2.4vw,28px);line-height:1.12;letter-spacing:-0.02em">Tested without lithium.</h2>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:var(--muted);text-wrap:pretty">A heated test rig stands in for a failing cell, so the barrier can be tested safely, without real lithium cells.</p>
+  </div>
+</section><section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:0 clamp(16px,4vw,40px) clamp(56px,7vw,96px)"><div style="flex:2 1 260px;min-width:0;align-self:center;aspect-ratio:16/7;border-radius:18px;border:1px dashed #3A3F46;background:repeating-linear-gradient(135deg,#14161A 0 12px,#17191D 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#A3A8B0;width:100%;flex:none">[PHOTO OR VIDEO: THE HEATED TEST RIG]</div></section><section style="background:#15171A;border-top:1px solid #2B2F35;border-bottom:1px solid #2B2F35">
+<div style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:clamp(56px,7vw,96px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center">
+<div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
+<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:#FF6B1A">THE RESULT</span>
+<h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-0.03em">[YOUR HEADLINE RESULT]</h2>
+<p style="margin:0;font-size:17px;line-height:1.6;color:#C9CCD1">Add the temperature next to the failing cell with and without the barrier, once you have the measurements.</p>
+</div>
+<div style="flex:2 1 260px;min-width:0;align-self:center;aspect-ratio:16/10;border-radius:18px;border:1px dashed #3A3F46;background:repeating-linear-gradient(135deg,#14161A 0 12px,#17191D 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:#A3A8B0;flex:1 1 420px">[GRAPH: NEIGHBOUR CELL TEMPERATURE OVER TIME, WITH AND WITHOUT THE BARRIER]</div>
+</div>
+</section><section style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:clamp(56px,7vw,96px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center">
+<div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:18px">
+<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:#FF6B1A">THE NEXT STEP</span>
+<h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-0.03em;text-wrap:balance">Next: thinner than a credit card.</h2>
+<p style="margin:0;font-size:17px;line-height:1.6;color:#C9CCD1;text-wrap:pretty">For production, the barrier shrinks to less than the thickness of a credit card. It&#39;s made of graphite and mica, with a wax tray at the edge of the module.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px"><span style="min-height:40px;padding:0 18px;border-radius:999px;border:1px solid #3A3F46;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;color:#EEEAE2">GRAPHITE</span><span style="min-height:40px;padding:0 18px;border-radius:999px;border:1px solid #3A3F46;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;color:#EEEAE2">MICA</span><span style="min-height:40px;padding:0 18px;border-radius:999px;border:1px solid #3A3F46;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;color:#EEEAE2">WAX TRAY · MODULE EDGE</span></div>
+</div>
+<div style="flex:1 1 360px;min-width:0;background:#15171A;border:1px solid #2B2F35;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">CREDIT CARD · 0.76 MM</span><div aria-hidden="true" style="height:22px;border-radius:4px;background:#EEEAE2"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:#FF6B1A">PRODUCTION BARRIER · [TARGET THICKNESS]</span><div aria-hidden="true" style="height:10px;width:100%;border-radius:3px;background:repeating-linear-gradient(45deg,#EEEAE2 0 4px,#9C9A94 4px 8px)"></div></div>
+<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;font-weight:500;letter-spacing:.12em;color:#A3A8B0">THICKNESSES SHOWN FOR COMPARISON, NOT TO SCALE</span>
+</div>
+</section><section style="border-top:1px solid #2B2F35">
+<div style="max-width:1240px;margin:0 auto;box-sizing:border-box;padding:clamp(40px,5vw,64px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+<span style="font-weight:800;font-stretch:125%;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em">Back down the gears.</span>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a class="cta" href="Main.dc.html" style="min-height:52px;padding:0 26px;border-radius:999px;background:#FF6B1A;color:#0C0D0F;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px">Back to the cockpit</a><a class="ghost" href="Main.dc.html#contact" style="min-height:52px;padding:0 24px;border-radius:999px;border:2px solid #3A3F46;color:#EEEAE2;font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:8px">Get in touch</a></div>
+</div>
+</section>
+</div>
+</div>
+
+</body>
+</html>
