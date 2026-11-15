@@ -59,10 +59,10 @@
       await wait(450);
       return c;
     },
-    // 1. name card: huge red surname bleeding off-screen, portrait, script first name
+    // 1. name card: huge red letter bleeding off-screen, script first name
     async function (stage) {
       var c = el(stage, 'tt-card', 'background:#111');
-      var im = el(c, 'tt-img', 'background-image:url(' + IMG + 'me.jpg);background-position:62% 30%;filter:grayscale(.35) contrast(1.15) brightness(.85)');
+      var im = el(c, 'tt-img', 'background:radial-gradient(ellipse at 70% 40%,#3a0a05 0%,#111 60%);background-image:radial-gradient(ellipse at 70% 40%,#3a0a05 0%,#111 60%),repeating-linear-gradient(115deg,transparent 0 40px,rgba(255,255,255,.025) 40px 42px)');
       el(c, 'tt-tint', 'background:linear-gradient(90deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.55) 38%,rgba(120,0,8,.25) 70%,rgba(10,10,11,.6) 100%)');
       var big = el(c, '', 'position:absolute;left:4vw;top:47%;transform:translateY(-50%);' + EXP + ';font-size:clamp(180px,34vw,500px);line-height:.8;color:' + RED + ';opacity:.9;white-space:nowrap;transform-origin:left center', 'N');
       var name = el(c, '', 'position:absolute;left:6vw;bottom:15vh;z-index:4;display:flex;align-items:flex-end;gap:1.2vw;flex-wrap:wrap',
@@ -177,7 +177,7 @@
     o.addEventListener('click', finish);
     document.addEventListener('keydown', esc);
     (async function () {
-      await preload(['me.jpg', 'gearbox-full.jpg', 'hackathon-judges.jpg', 'bmw-drift.jpg', 'moon3.jpg'].map(function (s) { return IMG + s; }));
+      await preload(['gearbox-full.jpg', 'hackathon-judges.jpg', 'bmw-drift.jpg', 'moon3.jpg'].map(function (s) { return IMG + s; }));
       var prev = null;
       for (var i = 0; i < CARDS.length && !stopped; i++) {
         if (i) await cut(stage, prev);
