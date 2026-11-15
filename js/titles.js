@@ -59,18 +59,18 @@
       await wait(450);
       return c;
     },
-    // 1. name card: huge red letter bleeding off-screen, script first name
+    // 1. name card: huge red #24, portrait behind, script first name
     async function (stage) {
       var c = el(stage, 'tt-card', 'background:#111');
-      var im = el(c, 'tt-img', 'background:radial-gradient(ellipse at 70% 40%,#3a0a05 0%,#111 60%);background-image:radial-gradient(ellipse at 70% 40%,#3a0a05 0%,#111 60%),repeating-linear-gradient(115deg,transparent 0 40px,rgba(255,255,255,.025) 40px 42px)');
+      var im = el(c, 'tt-img', 'background-image:url(' + IMG + 'me.jpg);background-position:62% 30%;filter:grayscale(.35) contrast(1.15) brightness(.85)');
       el(c, 'tt-tint', 'background:linear-gradient(90deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.55) 38%,rgba(120,0,8,.25) 70%,rgba(10,10,11,.6) 100%)');
-      var big = el(c, '', 'position:absolute;left:4vw;top:47%;transform:translateY(-50%);' + EXP + ';font-size:clamp(180px,34vw,500px);line-height:.8;color:' + RED + ';opacity:.9;white-space:nowrap;transform-origin:left center', 'N');
+      var big = el(c, '', 'position:absolute;right:3vw;top:44%;transform:translateY(-50%);' + EXP + ';font-size:clamp(110px,20vw,300px);line-height:.8;color:' + RED + ';opacity:.9;white-space:nowrap;transform-origin:right center', '#24');
       var name = el(c, '', 'position:absolute;left:6vw;bottom:15vh;z-index:4;display:flex;align-items:flex-end;gap:1.2vw;flex-wrap:wrap',
         '<span class="tt-script" style="font-size:clamp(34px,6vw,86px);transform:rotate(-8deg) translateY(.2em)">Yashvardhan</span><span class="tt-bold" style="font-size:clamp(44px,8.5vw,128px)">SONEGARA</span>');
-      tags(c, [['Nº N', 'top:calc(7vh + 18px);left:6vw'], ['BANGALORE · INDIA', 'top:calc(7vh + 18px);right:6vw'], ['VIDYASHILP ACADEMY', 'bottom:calc(7vh + 18px);right:6vw']]);
+      tags(c, [['Nº 24', 'top:calc(7vh + 18px);left:6vw'], ['BANGALORE · INDIA', 'top:calc(7vh + 18px);right:6vw'], ['VIDYASHILP ACADEMY', 'bottom:calc(7vh + 18px);right:6vw']]);
       c.style.opacity = 1; sfx('thud', 0.8);
       anim(im, [{ transform: 'scale(1.18)' }, { transform: 'scale(1.04)' }], { duration: 1900, easing: 'cubic-bezier(.2,.7,.3,1)' });
-      anim(big, [{ transform: 'translate(-20vw,-50%) skewX(-8deg)', opacity: 0 }, { transform: 'translate(0,-50%) skewX(-8deg)', opacity: .9 }], { duration: 650 });
+      anim(big, [{ transform: 'translate(20vw,-50%) skewX(-8deg)', opacity: 0 }, { transform: 'translate(0,-50%) skewX(-8deg)', opacity: .9 }], { duration: 650 });
       await wait(260);
       await anim(name, [{ opacity: 0, transform: 'translateX(-6vw) skewX(-10deg)' }, { opacity: 1, transform: 'none' }], { duration: 520 });
       await wait(1050);
@@ -177,7 +177,7 @@
     o.addEventListener('click', finish);
     document.addEventListener('keydown', esc);
     (async function () {
-      await preload(['gearbox-full.jpg', 'hackathon-judges.jpg', 'bmw-drift.jpg', 'moon3.jpg'].map(function (s) { return IMG + s; }));
+      await preload(['me.jpg', 'gearbox-full.jpg', 'hackathon-judges.jpg', 'bmw-drift.jpg', 'moon3.jpg'].map(function (s) { return IMG + s; }));
       var prev = null;
       for (var i = 0; i < CARDS.length && !stopped; i++) {
         if (i) await cut(stage, prev);
