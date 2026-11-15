@@ -124,9 +124,9 @@
           <!-- 3×3 grid overlay for knob placement -->
           <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,64px);column-gap:28px;row-gap:20px">
             <button class="knob" data-gear="1" aria-pressed="false" aria-label="Shift to 1st gear: the gearbox" style="grid-column:1;grid-row:1">1</button>
-            <button class="knob" data-gear="3" aria-pressed="false" aria-label="Shift to 3rd gear: photography" style="grid-column:3;grid-row:1">3</button>
+            <button class="knob" data-gear="3" aria-pressed="false" aria-label="Shift to 3rd gear: this website" style="grid-column:3;grid-row:1">3</button>
             <button class="knob" data-gear="N" aria-pressed="true" aria-label="Shift to neutral: about me" style="grid-column:2;grid-row:2">N</button>
-            <button class="knob" data-gear="2" aria-pressed="false" aria-label="Shift to 2nd gear: the fairtrade store" style="grid-column:1;grid-row:3">2</button>
+            <button class="knob" data-gear="2" aria-pressed="false" aria-label="Shift to 2nd gear: photography" style="grid-column:1;grid-row:3">2</button>
             <button class="knob" data-gear="4" aria-pressed="false" aria-label="Shift to 4th gear: the Mercedes hackathon" style="grid-column:3;grid-row:3">4</button>
           </div>
 
@@ -217,6 +217,7 @@
           <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">N · NEUTRAL · ABOUT ME</span>
           <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(28px,3.4vw,44px);line-height:1.04;letter-spacing:-0.025em;text-wrap:balance">Hi, I'm Yashvardhan.</h2>
           <p style="margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:620px;text-wrap:pretty">I'm a student at Vidyashilp Academy in Bangalore, and I build things to find out how they work. This whole page runs on the gearbox I made for physics. Shift into first to see where it started.</p>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:620px;text-wrap:pretty">Away from the workbench, I spent two years as head of social media for Steps for Smiles, a charity event raising money for children with cancer.</p>
           <div style="display:flex;flex-wrap:wrap;gap:16px 36px">
             <div style="display:flex;flex-direction:column;gap:4px">
               <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">BASED IN</span>
@@ -225,6 +226,10 @@
             <div style="display:flex;flex-direction:column;gap:4px">
               <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">SCHOOL</span>
               <span style="font-size:16px;font-weight:600;color:var(--chalk)">Vidyashilp Academy</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">LEADERSHIP</span>
+              <span style="font-size:16px;font-weight:600;color:var(--chalk)">Head of social media, Steps for Smiles</span>
             </div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:6px">
@@ -264,40 +269,12 @@
     </div>
   </article>
 
-  <!-- Panel 2 — 2nd Gear / Fairtrade Store -->
+  <!-- Panel 2 — 2nd Gear / Photography -->
   <article class="panel" data-gear="2" hidden>
     <div class="container" style="padding-block: clamp(24px,3.4vw,44px);">
       <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center">
         <div style="flex:3 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
-          <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">2ND GEAR · WEB DESIGN · WIX</span>
-          <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(28px,3.4vw,44px);line-height:1.04;letter-spacing:-0.025em;text-wrap:balance">A smoother fairtrade store for Vidyashilp.</h2>
-          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:620px;text-wrap:pretty">An online store that sells fairtrade products, built on Wix with Vidyashilp. I'm redesigning the interface so it looks better and moves more smoothly, then rebuilding it in Wix.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:16px 36px">
-            <div style="display:flex;flex-direction:column;gap:4px">
-              <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">STATUS</span>
-              <span style="font-size:16px;font-weight:600;color:var(--chalk)">Redesign in progress</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px">
-              <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">PLATFORM</span>
-              <span style="font-size:16px;font-weight:600;color:var(--chalk)">Wix</span>
-            </div>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:6px">
-            <button class="cta" data-shift-to="3">Shift into 3rd →</button>
-            <a class="ghost" href="https://vsafairtrade.wixsite.com/ecommercestore">Visit the current store ↗</a>
-          </div>
-        </div>
-        <div style="flex:2 1 260px;min-width:0;align-self:center;aspect-ratio:4/3;border-radius:18px;border:1px dashed var(--rule-2);background:repeating-linear-gradient(135deg,#14161A 0 12px,#17191D 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.1em;color:var(--muted)">[SCREENSHOT: THE STORE]</div>
-      </div>
-    </div>
-  </article>
-
-  <!-- Panel 3 — 3rd Gear / Photography -->
-  <article class="panel" data-gear="3" hidden>
-    <div class="container" style="padding-block: clamp(24px,3.4vw,44px);">
-      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center">
-        <div style="flex:3 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
-          <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">3RD GEAR · PHOTOGRAPHY</span>
+          <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">2ND GEAR · PHOTOGRAPHY</span>
           <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(28px,3.4vw,44px);line-height:1.04;letter-spacing:-0.025em;text-wrap:balance">Off the clock, behind a camera.</h2>
           <p style="margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:620px;text-wrap:pretty">I shoot on a Canon EOS 600D: the moon through a 250&nbsp;mm lens, and BMW cars at a drift event. A few favourites are further down this page, and more are on Instagram.</p>
           <div style="display:flex;flex-wrap:wrap;gap:16px 36px">
@@ -311,11 +288,39 @@
             </div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:6px">
-            <button class="cta" data-shift-to="4">Shift into 4th →</button>
+            <button class="cta" data-shift-to="3">Shift into 3rd →</button>
             <a class="ghost" href="#photos">See the photos ↓</a>
           </div>
         </div>
         <img src="assets/img/bmw-m4.jpg" alt="Close-up of an orange BMW M4 I photographed" loading="lazy" style="flex:2 1 260px;min-width:0;align-self:center;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:18px;border:1px solid var(--rule);display:block">
+      </div>
+    </div>
+  </article>
+
+  <!-- Panel 3 — 3rd Gear / This website -->
+  <article class="panel" data-gear="3" hidden>
+    <div class="container" style="padding-block: clamp(24px,3.4vw,44px);">
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center">
+        <div style="flex:3 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--ignition)">3RD GEAR · WEB DEVELOPMENT</span>
+          <h2 style="margin:0;font-weight:800;font-stretch:125%;font-size:clamp(28px,3.4vw,44px);line-height:1.04;letter-spacing:-0.025em;text-wrap:balance">This site, built gear by gear.</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:620px;text-wrap:pretty">I designed this portfolio with agentic AI, then built it in plain HTML, CSS and JavaScript. The gears use my real tooth counts, the pit stop is interactive, and every sound is made in code. It runs on GitHub Pages.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:16px 36px">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">BUILT WITH</span>
+              <span style="font-size:16px;font-weight:600;color:var(--chalk)">HTML · CSS · JavaScript</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--dim)">HOSTED ON</span>
+              <span style="font-size:16px;font-weight:600;color:var(--chalk)">GitHub Pages</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:6px">
+            <button class="cta" data-shift-to="4">Shift into 4th →</button>
+            <button class="ghost" type="button" onclick="if(window.PitStop)window.PitStop.replay()">Replay the pit stop ↺</button>
+          </div>
+        </div>
+        <img src="assets/img/site-shot.jpg" alt="The opening screen of this portfolio site" loading="lazy" style="flex:2 1 260px;min-width:0;align-self:center;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:18px;border:1px solid var(--rule);display:block">
       </div>
     </div>
   </article>
@@ -352,23 +357,6 @@
     </div>
   </article>
 
-
-  <!-- ============================================================
-       GARAGE — scroll tour of an exploded F1 car, part by part (js/car.js)
-       ============================================================ -->
-  <section id="garage" aria-label="The car, in pieces">
-    <div class="garage-sticky container">
-      <div class="garage-head">
-        <div>
-          <span class="garage-tag">THE GARAGE · SCROLL TO TOUR</span>
-          <h2>Every part, pulled apart.</h2>
-          <p class="garage-sub">I like knowing what is inside things. Here is a modern F1 car in pieces. Scroll, and we will stop at each part.</p>
-        </div>
-        <div class="garage-read" aria-live="off"><span class="garage-state">TOUR</span><b>START</b><div class="garage-bar"><i></i></div></div>
-      </div>
-      <div class="garage-car"></div>
-    </div>
-  </section>
 
   <!-- ============================================================
        MERCEDES SECTION
@@ -485,15 +473,15 @@
             </tr>
             <tr>
               <td style="font-weight:800;font-stretch:125%;font-size:22px;color:var(--rust)">2</td>
-              <td style="font-size:18px;font-weight:700">Vidyashilp fairtrade store</td>
-              <td class="fieldcol" style="color:var(--ink-muted)">Web design · Wix</td>
-              <td>Redesign in progress</td>
-            </tr>
-            <tr>
-              <td style="font-weight:800;font-stretch:125%;font-size:22px;color:var(--rust)">3</td>
               <td style="font-size:18px;font-weight:700">Photography</td>
               <td class="fieldcol" style="color:var(--ink-muted)">The moon and BMW cars · Canon EOS 600D</td>
               <td>On Instagram</td>
+            </tr>
+            <tr>
+              <td style="font-weight:800;font-stretch:125%;font-size:22px;color:var(--rust)">3</td>
+              <td style="font-size:18px;font-weight:700">This portfolio site</td>
+              <td class="fieldcol" style="color:var(--ink-muted)">Web development · HTML, CSS, JS</td>
+              <td>Live on GitHub Pages</td>
             </tr>
             <tr>
               <td style="font-weight:800;font-stretch:125%;font-size:22px;color:var(--rust)">4</td>
