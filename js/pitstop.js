@@ -341,6 +341,7 @@
         time.textContent = secs + ' s';
         lbl.textContent = 'YOUR PIT STOP · BACK ON TRACK';
         await wait(700);
+        if (window.F1Car) await window.F1Car.leave(o);
         await lightsOut(q('.pit-board'), lbl);
         if (window.Titles) await window.Titles.play();
         store('pit-intro', '1');
@@ -379,7 +380,8 @@
       if (e.detail === 0 || !STEPS[step].drag) act();
     });
 
-    show(0);
+    // the car drives into the box first, then the close-up tyre change starts
+    (window.F1Car ? window.F1Car.arrive(o) : Promise.resolve()).then(function () { if (!done) show(0); });
     // nudge if nobody taps for a while
     setTimeout(function () { if (!t0 && !done) lbl.textContent = 'STEP 1 OF 4 · TAP THE ORANGE NUT · OR SKIP ›'; }, 5000);
   }
