@@ -39,7 +39,7 @@
     enginecover: { off: [-30, -122, 0], lbl: [300, 146, 'ENGINE COVER'],
       svg: '<path d="M150,206 C230,194 310,168 390,148 L486,124 Q512,116 530,124 L566,150 L566,184 L300,204 L168,216 Z" fill="' + O + '"/>'
         + '<path d="M240,196 L446,134 L482,128 L482,150 L300,198 Z" fill="' + D + '"/>'
-        + '<text x="420" y="168" fill="' + C + '" font-family="Archivo,system-ui,sans-serif" font-weight="800" font-size="30" font-style="italic">4</text>'
+        + '<text x="400" y="170" fill="' + C + '" font-family="Archivo,system-ui,sans-serif" font-weight="800" font-size="32" font-style="italic">24</text>'
         + '<path d="M532,124 L560,128 L560,144 L534,144 Z" fill="' + K + '"/>' },
     tub: { off: [0, 0, 0], lbl: [628, 228, 'SURVIVAL CELL', 'middle', D],
       svg: '<path d="M536,150 L704,168 L724,200 L724,238 L516,240 L516,176 Z" fill="' + O + '"/>'
