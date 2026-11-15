@@ -354,6 +354,23 @@
 
 
   <!-- ============================================================
+       GARAGE — an original F1-style car that builds itself as you scroll (js/car.js)
+       ============================================================ -->
+  <section id="garage" aria-label="The car, in pieces">
+    <div class="garage-sticky container">
+      <div class="garage-head">
+        <div>
+          <span class="garage-tag">THE GARAGE · KEEP SCROLLING</span>
+          <h2>Built from parts, like everything I make.</h2>
+          <p class="garage-sub">The gearbox, the test rig, this site: each one started as a pile of pieces. Scroll and watch this car bolt together.</p>
+        </div>
+        <div class="garage-read" aria-live="off"><span class="garage-state">ASSEMBLY</span><b>0%</b><div class="garage-bar"><i></i></div></div>
+      </div>
+      <div class="garage-car"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        MERCEDES SECTION
        ============================================================ -->
   <section id="mercedes" class="container" style="padding-bottom:clamp(64px,8vw,112px);display:flex;flex-direction:column;gap:36px">
@@ -654,6 +671,7 @@
     </div>
   </footer>
 
+  <script src="js/car.js" defer></script>
   <script src="js/pitstop.js" defer></script>
   <script src="js/spa.js" defer></script>
   <script src="js/titles.js" defer></script>
