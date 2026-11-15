@@ -1,5 +1,5 @@
 /* car.js — an original F1-style car (not a real team's car or livery).
-   1. #garage: the car sits in pieces and bolts itself together as you scroll.
+   1. #garage: a scroll tour of an exploded F1 render (assets/img/car-exploded.jpg), part by part.
    2. window.F1Car.arrive / leave: the car drives into the pit box, jacks up, and drives away
       (used by pitstop.js around the interactive tyre change).
    Plain script; respects prefers-reduced-motion. */
@@ -131,6 +131,17 @@
       + '@keyframes garage-line{to{transform:translateX(480%)}}'
       + '@keyframes garage-idle{to{transform:translateY(1px)}}'
       + '@media (prefers-reduced-motion: reduce){#garage{height:auto}#garage .garage-sticky{position:static;height:auto;padding-top:80px;padding-bottom:80px}#garage.ready .spin,#garage.ready .garage-car svg{animation:none}#garage .lines{display:none}}'
+      + '#garage{height:620vh}'
+      + '#garage .tour{position:relative;width:min(100%,calc(62vh * 1672 / 941));aspect-ratio:1672/941;margin:0 auto;border-radius:18px;overflow:hidden;background:#050506;border:1px solid #2B2F35}'
+      + '#garage .tour img{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;max-width:none;user-select:none;-webkit-user-drag:none}'
+      + '#garage .tour-dot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:' + O + ';box-shadow:0 0 0 0 rgba(255,107,26,.7);animation:tour-pulse 1.4s infinite;transition:opacity .3s;pointer-events:none}'
+      + '@keyframes tour-pulse{70%{box-shadow:0 0 0 18px rgba(255,107,26,0)}100%{box-shadow:0 0 0 0 rgba(255,107,26,0)}}'
+      + '#garage .tour-cap{position:absolute;left:16px;bottom:16px;max-width:min(420px,calc(100% - 32px));padding:14px 16px;border-radius:14px;background:rgba(12,13,15,.86);backdrop-filter:blur(8px);border:1px solid #2B2F35}'
+      + '#garage .tour-cap .n{display:block;font-family:' + MONO + ';font-size:11px;letter-spacing:.14em;color:' + O + '}'
+      + '#garage .tour-cap b{display:block;margin-top:4px;font-family:Archivo,system-ui,sans-serif;font-weight:800;font-stretch:115%;font-size:clamp(18px,2.2vw,26px);line-height:1.1}'
+      + '#garage .tour-cap p{margin:6px 0 0;color:#C9CCD1;font-size:clamp(13px,1.2vw,15px);line-height:1.45}'
+      + '@media (max-width:640px){#garage .tour{width:100%;aspect-ratio:auto;height:52vh}#garage .tour-cap{left:10px;right:10px;bottom:10px;max-width:none;padding:10px 12px}}'
+      + '@media (prefers-reduced-motion: reduce){#garage{height:auto}#garage .tour-dot{display:none}}'
       // pit-lane scene
       + '.car-scene{position:absolute;inset:0;z-index:5;background:#0C0D0F;overflow:hidden}'
       + '.car-scene .cs-wall{position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(#0C0D0F,#15171A);border-bottom:4px solid #2B2F35}'
@@ -149,42 +160,72 @@
   function garage() {
     var sec = document.getElementById('garage'); if (!sec) return;
     var host = sec.querySelector('.garage-car'); if (!host) return;
-    host.innerHTML = '<div class="lines" aria-hidden="true">' + [18, 34, 52, 66, 80].map(function (t, i) { return '<i style="top:' + t + '%;animation-delay:-' + (i * 0.17) + 's"></i>'; }).join('') + '</div>'
-      + carSVG({ labels: true, shadow: true, label: 'An original F1-style car that assembles from its parts as you scroll' });
-    var parts = {};
-    host.querySelectorAll('.cp').forEach(function (g) { parts[g.getAttribute('data-p')] = g; });
+    var IW = 1672, IH = 941;
+    // tour stops on the exploded render: [x, y, zoom, title, note]
+    var STOPS = [
+      [836, 470, 1, 'THE WHOLE CAR', 'A modern F1 car pulled apart. Keep scrolling to go part by part.'],
+      [300, 660, 2.0, 'FRONT WING', 'The first part to meet the air. It sets up the airflow for the rest of the car.'],
+      [300, 360, 2.0, 'WHEEL, UPRIGHT & BRAKE', 'Carbon brake discs can run at over 1,000 °C under heavy braking.'],
+      [740, 310, 1.9, 'SURVIVAL CELL & HALO', 'The carbon-fibre tub protects the driver. The halo above it can take the weight of a bus.'],
+      [1150, 330, 2.0, 'POWER UNIT', 'A 1.6-litre V6 turbo hybrid. The engine and electric motors work together.'],
+      [1430, 290, 2.1, 'GEARBOX', 'Eight forward gears. Mine has four, and I printed every tooth.'],
+      [1410, 120, 2.0, 'REAR WING & DRS', 'A flap opens on the straights to cut drag, then closes for the corners.'],
+      [1100, 520, 1.8, 'FLOOR', 'Tunnels under the car pull it down onto the track. That is where most of the grip comes from.'],
+      [836, 470, 1, 'BACK TOGETHER', 'Every part has one job. That is how I like to build things too.']
+    ];
+    var N = STOPS.length;
+    host.innerHTML = '<div class="tour"><img src="assets/img/car-exploded.jpg" alt="Exploded view of a modern Formula 1 car, with every part floating apart" decoding="async">'
+      + '<span class="tour-dot" aria-hidden="true"></span>'
+      + '<div class="tour-cap" aria-live="polite"><span class="n"></span><b></b><p></p></div></div>';
+    var tour = host.querySelector('.tour'), img = tour.querySelector('img'), dot = tour.querySelector('.tour-dot'), capEl = tour.querySelector('.tour-cap');
     var pct = sec.querySelector('.garage-read b'), bar = sec.querySelector('.garage-bar i'), state = sec.querySelector('.garage-state');
-    var wasReady = false;
+    var shown = -1;
 
-    function ease(t) { t = Math.min(1, Math.max(0, t)); return 1 - Math.pow(1 - t, 3); }
-    function render(p) {
-      ORDER.forEach(function (k, i) {
-        var g = parts[k]; if (!g) return;
-        var e = ease((p - i * 0.055) / 0.4), o = PARTS[k].off, r = 1 - e;
-        g.style.transform = 'translate(' + (o[0] * r).toFixed(1) + 'px,' + (o[1] * r).toFixed(1) + 'px) rotate(' + (o[2] * r).toFixed(2) + 'deg)';
-        var l = g.querySelector('.lbl'); if (l) l.style.opacity = Math.max(0, 1 - e * 1.6).toFixed(2);
-      });
-      var shown = Math.round(Math.min(1, p / 0.95) * 100);
-      if (pct) pct.textContent = shown + '%';
-      if (bar) bar.style.width = shown + '%';
-      var ready = p >= 0.97;
-      if (ready !== wasReady) {
-        wasReady = ready;
-        sec.classList.toggle('ready', ready);
-        if (state) state.textContent = ready ? 'ASSEMBLED · READY TO RACE' : 'ASSEMBLY';
-        if (ready) { sfx('clunk'); engine(90, 210, 0.9, 0.12); }
-      }
+    function smooth(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }
+    function view(x, y, z) {
+      var W = tour.clientWidth, H = tour.clientHeight; if (!W || !H) return;
+      var k = Math.max(W / IW, H / IH), s = k * z, iw = IW * s, ih = IH * s;
+      var tx = Math.min(0, Math.max(W - iw, W / 2 - x * s)), ty = Math.min(0, Math.max(H - ih, H / 2 - y * s));
+      img.style.width = (IW * k) + 'px'; img.style.height = (IH * k) + 'px';
+      img.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + z.toFixed(3) + ')';
+      return [tx, ty, s];
     }
-    if (reduce) { render(1); return; }
+    function caption(i) {
+      if (i === shown) return; shown = i;
+      var st = STOPS[i];
+      capEl.querySelector('.n').textContent = (i === 0 || i === N - 1) ? 'EXPLODED VIEW' : ('PART ' + i + ' OF ' + (N - 2));
+      capEl.querySelector('b').textContent = st[3];
+      capEl.querySelector('p').textContent = st[4];
+      if (capEl.animate && !reduce) capEl.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'ease-out' });
+      if (state) state.textContent = (i === 0 || i === N - 1) ? 'TOUR' : 'PART';
+      if (i > 0 && i < N - 1) sfx('clunk');
+    }
+    function render(p) {
+      var f = p * (N - 1), i = Math.min(N - 2, Math.floor(f)), t = smooth((f - i - 0.3) / 0.4);
+      var a = STOPS[i], b = STOPS[i + 1];
+      var x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t, z = a[2] + (b[2] - a[2]) * t;
+      var v = view(x, y, z); if (!v) return;
+      var near = Math.round(f), st = STOPS[near];
+      caption(near);
+      // pulsing marker on the part, only while we are parked on a part
+      var parked = Math.abs(f - near) < 0.3 && near > 0 && near < N - 1;
+      dot.style.opacity = parked ? '1' : '0';
+      dot.style.left = (v[0] + st[0] * v[2]) + 'px'; dot.style.top = (v[1] + st[1] * v[2]) + 'px';
+      var n = Math.round(Math.min(1, p / 0.98) * 100);
+      if (pct) pct.textContent = (near > 0 && near < N - 1) ? (near + '/' + (N - 2)) : (p > 0.5 ? 'DONE' : 'START');
+      if (bar) bar.style.width = n + '%';
+    }
+    if (reduce) { img.onload = function () { render(0); }; render(0); window.addEventListener('resize', function () { render(0); }); return; }
     var ticking = false;
     function onScroll() {
       if (ticking) return; ticking = true;
       requestAnimationFrame(function () {
         ticking = false;
         var r = sec.getBoundingClientRect(), span = sec.offsetHeight - window.innerHeight;
-        render(span > 0 ? Math.min(1, Math.max(0, -r.top / (span * 0.85))) : 1);
+        render(span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0);
       });
     }
+    img.addEventListener('load', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     onScroll();
