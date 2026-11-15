@@ -27,12 +27,12 @@
     + '.spa-hero.on .lab{opacity:.75}'
     + '@keyframes spa-lap{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}'
     + '@media (max-width:900px){.spa-hero{opacity:.28;width:120vw;right:-30vw}.spa-hero .lab{display:none}}'
-    + '.spa-map{position:fixed;right:20px;bottom:20px;z-index:900;width:212px;padding:12px 14px 10px;border-radius:16px;border:1px solid #3A3F46;background:rgba(12,13,15,.86);backdrop-filter:blur(8px);color:#EEEAE2;font-family:' + MONO + ';box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .4s,opacity .4s}'
+    + '.spa-map{position:fixed;right:10px;bottom:10px;z-index:900;width:156px;padding:9px 11px 8px;pointer-events:none;border-radius:16px;border:1px solid #3A3F46;background:rgba(12,13,15,.86);backdrop-filter:blur(8px);color:#EEEAE2;font-family:' + MONO + ';box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .4s,opacity .6s}'
     + '.spa-map svg{display:block;width:100%;height:auto;overflow:visible}'
     + '.spa-map .row{display:flex;justify-content:space-between;gap:8px;font-size:10px;letter-spacing:.12em;color:#A3A8B0}'
     + '.spa-map .corner{font-size:11px;letter-spacing:.1em;color:#EEEAE2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
     + '.spa-map .sec{font-weight:600}'
-    + '@media (max-width:600px){.spa-map{width:96px;padding:6px 8px;right:10px;bottom:10px;border-radius:12px;background:rgba(12,13,15,.78)}.spa-map .row.top,.spa-map .corner{display:none}}'
+    + '@media (max-width:600px){.spa-map{width:74px;padding:5px 6px;right:6px;bottom:6px;border-radius:12px;background:rgba(12,13,15,.78)}.spa-map .row.top,.spa-map .corner{display:none}}'
     + '.spa-banner{position:fixed;left:20px;top:84px;z-index:950;display:flex;align-items:stretch;min-height:52px;border-radius:6px;overflow:hidden;background:#0C0D0F;border:1px solid #3A3F46;box-shadow:0 12px 30px rgba(0,0,0,.45);font-family:' + MONO + ';transform:translateX(-120%);pointer-events:none}'
     + '.spa-banner .tag{display:flex;align-items:center;justify-content:center;min-width:52px;padding:0 12px;font-family:Archivo,system-ui,sans-serif;font-weight:800;font-stretch:125%;font-size:20px;color:#0C0D0F}'
     + '.spa-banner .txt{display:flex;flex-direction:column;justify-content:center;padding:6px 18px 6px 14px;gap:2px}'
@@ -132,7 +132,9 @@
       base.style.strokeDashoffset = String(1 - f);
       var pt = real.getPointAtLength(L * f); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
       pctEl.textContent = Math.round(f * 100) + '%';
-      map.style.opacity = f > 0.03 ? '1' : '0'; map.style.transform = f > 0.03 ? 'none' : 'translateY(16px)';
+      // fade right down while you're reading, unless the screen is wide enough for it to sit beside the content
+      var roomy = innerWidth >= 1600;
+      map.style.opacity = f > 0.03 ? (idle && !roomy ? '0.12' : '1') : '0'; map.style.transform = f > 0.03 ? 'none' : 'translateY(16px)';
       var cur = marks[0];
       for (var i = 0; i < marks.length; i++) if (f >= marks[i].f) cur = marks[i];
       secEl.textContent = 'S' + cur.sector; secEl.style.color = SECTOR_COL[cur.sector];
@@ -142,7 +144,12 @@
       if (f < 0.01) last = -1;
       if (f >= 0.985 && !finished && introGone()) chequered();
     }
-    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    var idle = false, idleT;
+    addEventListener('scroll', function () {
+      idle = false; clearTimeout(idleT);
+      idleT = setTimeout(function () { idle = true; update(); }, 1200);
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
     addEventListener('resize', update);
     update();
   }
