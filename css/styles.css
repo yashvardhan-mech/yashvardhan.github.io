@@ -478,3 +478,28 @@ footer { background: var(--asphalt); color: var(--dim); }
 .spa-hero { max-width: 100%; }
 a[href^="mailto"] { overflow-wrap: anywhere; word-break: break-word; max-width: 100%; white-space: normal; }
 @media (max-width: 480px) { a[href^="mailto"] { font-size: 14px !important; padding: 0 18px !important; } }
+
+/* about-me extras */
+.about-extras{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:16px;border:1px solid var(--rule);border-radius:14px;background:rgba(255,255,255,.02)}
+.about-extras div{display:flex;flex-direction:column;gap:4px}
+.about-extras div span:last-child{font-size:15px;font-weight:600;color:var(--chalk);line-height:1.35}
+
+/* photo galleries: tiles of mixed shapes */
+.shoot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:44vw;grid-auto-flow:dense;gap:10px}
+.shoot-grid figure{position:relative;margin:0;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--rule)}
+.shoot-grid a{display:block;width:100%;height:100%}
+.shoot-grid img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.9,.3,1)}
+.shoot-grid a:hover img{transform:scale(1.05)}
+.shoot-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#EEEAE2;background:linear-gradient(transparent,rgba(0,0,0,.75));pointer-events:none}
+.shoot-grid .big,.shoot-grid .w2{grid-column:span 2}
+.shoot-grid .tall{grid-row:span 2}
+@media (min-width:800px){
+  .shoot-grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(160px,17vw,240px)}
+  .shoot-grid .big{grid-column:1 / 3;grid-row:1 / 3}
+  .g-drift .a{grid-column:3;grid-row:1 / 3}.g-drift .b{grid-column:4;grid-row:1 / 3}
+  .g-drift .c{grid-column:1;grid-row:3 / 5}.g-drift .d{grid-column:2 / 4;grid-row:3}
+  .g-drift .e{grid-column:2 / 4;grid-row:4}.g-drift .f{grid-column:4;grid-row:3 / 5}
+  .g-tokyo .a{grid-column:1;grid-row:1 / 3}.g-tokyo .b{grid-column:2 / 4;grid-row:1}
+  .g-tokyo .c{grid-column:4;grid-row:1}.g-tokyo .d{grid-column:2;grid-row:2}
+  .g-tokyo .e{grid-column:3 / 5;grid-row:2}
+}
